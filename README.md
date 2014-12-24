@@ -20,7 +20,7 @@ It is a program manager application that based on node-webkit, as show below:
 ![](https://raw.githubusercontent.com/xiebaochun/nw-program-manager/master/images/help/pre.png)
 
 ##First of all: Choose the user
- If there are no problems in running the app, you can see below iamge,now you should choose the user,the client mean the client end(side),the server mean the controller end(side).
+ If there are no problems in running the app, you can see below image,now you should choose the user,the client mean the client end(side),the server mean the controller end(side).
 
 ![](https://raw.githubusercontent.com/xiebaochun/nw-program-manager/master/images/help/1.png)
 

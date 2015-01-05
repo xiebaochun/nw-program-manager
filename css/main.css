@@ -1,0 +1,362 @@
+/*通用css,每个页都需要的css*/
+* {
+	margin:0;
+	padding: 0;
+	font-family: '微软雅黑', 'hiragino sans gb', 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', '宋体', simsun, sans-serif;
+	color: #aaa;
+}
+a {
+	text-decoration: none;
+}
+img {
+	border: none;
+}
+.clear {
+	clear: both;
+}
+.header {
+	width: 100%;
+	height: 56px;
+	position: fixed;
+	z-index: 1000;
+	padding: 0 auto;
+
+}
+.header-opacity {
+	margin:0 auto;
+	height: 56px;
+	width: 100%;
+	background-color: black;
+	/* for IE */
+  	filter:alpha(opacity=60);
+  	/* CSS3 standard */
+  	opacity:0.6;
+  	position:fixed;
+  	z-index: 1000;
+}
+.headerContent {
+	position:relative;
+	width: 990px;
+	/*上下0,左右居中*/
+	margin:0 auto;
+	height: 56px;
+
+}
+.headerContent * {
+	display: inline;
+	float: left;
+	font-size: 13px;
+}
+.headerContent ul {
+	list-style-type: none;
+	margin:0;
+	padding: 0;
+	margin-left: 233px;
+
+}
+.headerContent > ul > li {
+	width: 100px;
+	height: 55px;
+}
+.headerContent > ul > li a {
+	display: block;
+	width: 83px;
+	height: 29px;
+	/*行距,让文字竖直居中*/
+	line-height: 29px;
+	border-radius: 4px;
+	-webkit-border-radius:4px;
+	text-align: center;
+	margin: 12px 0;
+    color: #ffffff;
+}
+.headerContent > ul > li a:hover {
+	color: #eeeeee;
+}
+ .headerContent > ul > li a.active {
+	border: 1px solid white;
+	color: #eeeeee;
+}
+/*导航登录注册按钮*/
+.nav-login-register-button {
+	width: 150px;
+	margin-left: 22px;
+	text-align: center;
+	line-height: 54px;
+	padding-left: 8px
+}
+.nav-login-register-button a {
+	color: white;
+}
+.nav-login-register-button a:hover {
+	color: #ef4f58;
+}
+/*最外层的div*/
+.mainContainer {
+	width: 100%;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 0px;
+    position: relative;
+	min-width: 1024px;
+	margin: 0 auto;
+	margin-bottom: 0;
+}
+.mainContainer > * {
+		/*居中*/
+	margin: 0 auto;
+
+}
+/*第二层div,分层*/
+.section {
+	width: 100%;
+	/*每一个板块都紧挨着,*/
+	position: relative;
+	top:0;
+	left: 0;
+
+}
+/*.section > *｛
+	width:100%;
+｝*/
+
+.title-wrap {
+	background:url("../images/yinying.png") bottom  repeat-x rgb(200,200,200);
+	height: 92px;
+}
+.title-wrap > h2 {
+	text-align: center;
+	line-height:92px;
+	color: white;
+	font-weight: normal;
+}
+.sanjiao {
+	height: 16px;
+	width: 100%;
+	background:  url("../images/sanjiao.png") top center no-repeat #f6f6f6;
+}
+
+
+/*快速注册*/
+
+.quick-register-wrap {
+	margin-top: -22px;
+	width: 100%;
+	background-color:rgb(50,50,50);
+	height: 190px;
+	padding-top: 45px;
+	min-width: 1024px;
+}
+.quick-register-wrap > h2 {
+	text-align: center;
+	font-weight: normal;
+}
+.quick-register-wrap > h2 > span{
+	text-align: center;
+	color: white;
+}
+.quick-register-form {
+	margin-top: 42px;
+	width: 1020px;
+	margin: 42px auto 0 auto;
+}
+.quick-register-form > input[class^="input"] {
+	margin:0 0 0 10px;
+	width: 180px;
+	height: 20px;
+	border: 0;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	background-color:rgb(236,236,236);
+	font-size: 16px;
+	padding:19px 0 19px 80px;
+}
+.quick-register-form > input[class^="input"]:focus {
+	border: 2px;
+    border-color: #66AFE9;
+    outline: 0px none;
+	background-color:white;
+}
+.input-email {
+	background:  url('../images/email.png') 30px center no-repeat;
+}
+.input-user {
+	background:  url('../images/user.png') 30px center no-repeat;
+}
+.input-key {
+	background:  url('../images/key.png') 30px center no-repeat;
+}
+.quick-register-form > .submit-button {
+	cursor:pointer;
+	margin-left: 11px;
+	font-size: 18px;
+	color: white;
+	background: rgb(239,79,88);
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 0;
+	width: 172px;
+	height: 58px;
+}
+
+#error-div {
+	margin: 0 auto;
+	color: red;
+	position: relative;
+}
+#error-div .error {
+	color: red;
+}
+#error-div label {
+	display: inline-block;
+	position: absolute;
+	width: 250px;
+}
+#error-div label[for="username"]{
+	left: 20px;
+}
+#error-div label[for="realName"]{
+	left: 290px;
+}
+#error-div label[for="password"]{
+	left: 560px;
+}
+
+
+
+
+
+/*底部样式*/
+.footer {
+	width: 100%;
+	background-color:rgb(30,30,30);
+	height: 130px;
+	min-width: 1024px;
+}
+.footer-inner {
+	width: 987px;
+	margin: 0 auto;
+	padding-top: 30px;
+
+}
+.footer-inner > ul {
+	width: 654px;
+	list-style-type: none;
+	margin:0;
+	padding: 0;
+	float: left;
+	display: block;
+}
+.footer-inner > ul > li {
+	display: inline;
+	float: left;
+	margin-right: 65px;
+	height: 40px;
+	line-height: 40px;
+}
+.footer-inner > ul > li > a:hover {
+	color: white;
+}
+
+/*联系方式样式*/
+.footer-inner > .contact-way-list {
+	width: 195px;
+	float: right;
+}
+.footer-inner > .contact-way-list > li {
+	width: 65px;
+	margin: 0;
+}
+.contact-way-iterm {
+	margin-top: 0px;
+	height: 39px;
+	width: 39px;
+	position: relative;
+}
+.contact-way-icon , .contact-way-handler {
+	background: url("../images/footer-image.png");
+}
+.contact-way-icon {
+	width: 39px;
+	height: 39px;
+}
+.weibo-icon:hover {
+	background-position: 0 -39px;
+}
+.wechat-icon {
+	background-position: -39px 0;
+}
+.wechat-icon:hover {
+	background-position: -39px -39px;
+}
+.qq-icon {
+	background-position: -78px 0;
+}
+.qq-icon:hover {
+	background-position: -78px -39px;
+}
+.contact-way-handler {
+	position: absolute;
+	display: none;
+}
+ .weibo-handler {
+	top: -70px;
+	left: -80px;
+	background-position: -289px 0;
+	width: 130px;
+	height: 70px;
+}
+ .wechat-handler {
+	top: -144px;
+	left: -80px;
+	background-position: -419px 0;
+	width: 130px;
+	height: 144px;
+}
+.qq-handler {
+	top: -30px;
+	left: -120px;
+	background-position: -118px 0;
+	width: 171px;
+	height: 30px;
+}
+.contact-way-handler p {
+	padding-left: 10px;
+	text-align: left;
+	font-size: 13px;
+	height: 25px;
+	line-height: 25px;
+	color: #3F4754;
+}
+.contact-way-handler .title {
+	text-align: center;
+}
+.contact-way-handler p a {
+	color: rgb(239,79,88);
+}
+.contact-way-handler p a:hover {
+	color: red;
+}
+
+.footer-bottom{
+	width: 500px;
+	margin: 0 auto;
+	margin-top: 25px;
+	font-size: 12px;
+	text-align: center;
+}
+.tel {
+	position: absolute;
+	right: 21px;
+    top :0px;
+	width: 116px;
+	height: 55px;
+}
+.rotate180{
+        filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+        -moz-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+}

@@ -2,7 +2,7 @@
   "name": "nw-workbook",
   "main": "index.html",
   "window": {
-    "toolbar": true,
+    "toolbar": false,
     "frame": false,
     "width": 950,
     "height": 550,

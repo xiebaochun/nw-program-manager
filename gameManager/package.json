@@ -1,0 +1,12 @@
+{
+  "name": "nw-workbook",
+  "main": "index.html",
+  "window": {
+    "toolbar": false,
+    "frame": false,
+    "width": 265,
+    "height": 419,
+    "position": "center", 
+    "icon": "icon_128.png"
+  }
+}

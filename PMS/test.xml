@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <game>
+    <name>cycling</name>
+    <operate>run</operate>
+  </game>
+  <game>
+    <name>cleanWindow</name>
+    <operate>stop</operate>
+  </game>
+  <game>
+    <name>baduanjin</name>
+    <operate>stop</operate>
+  </game>
+  <SpO2>56</SpO2>
+  <HR>90</HR>
+  <status>2</status>
+  <isShow>true</isShow> 
+</root>

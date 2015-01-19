@@ -144,10 +144,18 @@ p.dealWithInfo = function(info) {
 	var manager = this;
 	$.each(info.game, function(index, value) {
 		//console.log(value);
+		var serverGame = value;
 		if (typeof manager.games[index] == "undefined") {
 			//console.log(this);
-			manager.games[index] = new Game(value);
-			manager.games[index].setPath(config.); 
+			manager.games[index] = new Game();
+			$.each(manager.config.games,function(index,value){
+				//console.log(value);
+				console.log(value);
+				if(value.name == serverGame.name){
+					manager.games[index].init(value);
+					//manager.games[index].setPath(value.path); 		
+				}
+			})
 		}
 		//update games
 		manager.games[index].update(value);

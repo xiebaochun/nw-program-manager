@@ -6,7 +6,10 @@
     "frame": false,
     "width": 265,
     "height": 419,
-    "position": "center", 
+    "position": "center",
     "icon": "icon_128.png"
+  },
+  "dependencies": {
+    "open": "0.0.5"
   }
 }

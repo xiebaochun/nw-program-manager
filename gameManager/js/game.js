@@ -22,6 +22,8 @@ p._name = null;
 
 p._gameCategory = null;
 
+p._isRunningHttpReturn = true;
+
 
 //localGameConfig:game:{name:"xx",path:"xx"}
 p.init = function(localGameConfig) {
@@ -62,17 +64,19 @@ p.update = function(gameInfo) {
 			//if game information`s operation from server is end or stop
 			if (gameInfo.operate == 'stop') {
 				//game.killProcessByPid(game._pids[0]);
-				game.stop();
+				game.stop(game._name);
 			}
 
 		} else {
 			//if game information`s operation from server is run 
 			//if game is not running then run it 
 			console.log(game._gameCategory)
+			console.log(game._path)
 			console.log(gameInfo.operate)
 			if (gameInfo.operate == 'run') {
 				//if game category is the web game (cycling game)
 				if (game._gameCategory == "web") {
+					console.log("run...........................")
 					var gamePoint = open(game._path, "chrome");
 				} else {
 					var exec = require('child_process').execFile;
@@ -93,19 +97,38 @@ p.update = function(gameInfo) {
 p.isRunning = function(name, callback) {
 	var game = this;
 
+	if (game._isRunningHttpReturn == false) {
+		return;
+	}
+
 	if (this._gameCategory == "web") {
+		name = "chrome";
 		async.series({
-			gameStatus: function(callback) {
-				game.getInfoByHttp(game, "", callback);
-			}
-		}, function(err, results) {
-			if (results.gameStatus.gameStatus == "null") {
-				callback(null,false);
-			}
-			if (results.gameStatus.gameStatus == "running") {
-				callback(null,true);
-			}
-		});
+				pids: function(callback) {
+					game.getProcessPidByName(name, callback);
+				},
+			}, function(err, results) {
+				if (results.pids.length != 0) {
+					game._pids = results.pids;
+					callback(null, true);
+				} else {
+					callback(null, false);
+				}
+			})
+			//async.series({
+			// 	gameStatus: function(callback) {
+			// 		game._isRunningHttpReturn = false;
+			// 		game.getInfoByHttp(game, "", callback);
+			// 	}
+			// }, function(err, results) {
+			// 	game._isRunningHttpReturn = true;
+			// 	if (results.gameStatus.gameStatus == "null") {
+			// 		callback(null, false);
+			// 	}
+			// 	if (results.gameStatus.gameStatus == "running") {
+			// 		callback(null, true);
+			// 	}
+			// });
 
 	} else {
 		async.series({
@@ -121,9 +144,6 @@ p.isRunning = function(name, callback) {
 			}
 		})
 	}
-
-
-
 }
 
 /**
@@ -171,6 +191,27 @@ p.getProcessPidByName = function(name, callback) {
 }
 
 /**
+ * [killAppByName description]
+ * @param  {string} name game name
+ * @return {[type]}      [description]
+ */
+p.killAppByName = function(name) {
+	var game = this;
+	async.series({
+		pids: function(callback) {
+			game.getProcessPidByName(name, callback);
+		}
+	}, function(err, results) {
+		if (results.pids.length != 0) {
+			$.each(results.pids,function(index,value){
+				game.killProcessByPid(value);
+			});
+		}
+	});
+
+}
+
+/**
  * kill the app by it`s pid
  * @param  {number} pid of game which to be stoped
  * @return {null}
@@ -195,14 +236,16 @@ p.setPath = function(path) {
  * stop the game
  * @return {null}
  */
-p.stop = function() {
+p.stop = function(name) {
 	var game = this;
 	//pre work 
 	async.series({
 		prework: function(callback) {
 			if (game._gameCategory == "web") {
-				game.getInfoByHttp(game, "&operate=stop", callback);
+				//game.getInfoByHttp(game, "&operate=stop", callback);
+				name = "chrome";
 			}
+			game.killAppByName(name);
 		}
 	}, function(err, results) {
 		if (err) {

@@ -8,11 +8,5 @@
 	"games": [{
 		"name": "cycling",
 		"path": "http://localhost:8081/BikeGame"
-	}, {
-		"name": "cleanWindow",
-		"path": ""
-	}, {
-		"name": "baduanjin",
-		"path": ""
 	}]
 }

@@ -143,7 +143,8 @@ p.dealWithInfo = function(info) {
 	//console.log(typeof this.games[3]);
 	var manager = this;
 	$.each(info.game, function(index, value) {
-		//console.log(value);
+		console.log("manager:value:"+value);
+		console.log(value);
 		var serverGame = value;
 		if (typeof manager.games[index] == "undefined") {
 			//console.log(this);
@@ -152,6 +153,7 @@ p.dealWithInfo = function(info) {
 				//console.log(value);
 				console.log(value);
 				if(value.name == serverGame.name){
+					console.log("init the game with value："+value);
 					manager.games[index].init(value);
 					//manager.games[index].setPath(value.path); 		
 				}

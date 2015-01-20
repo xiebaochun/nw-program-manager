@@ -5,15 +5,15 @@
     <operate>run</operate>
   </game>
   <game>
-    <name>cleanWindow</name>
+    <name>cleanwindow</name>
     <operate>stop</operate>
   </game>
   <game>
-    <name>baduanjin</name>
+    <name>daduanjin</name>
     <operate>stop</operate>
   </game>
-  <SpO2>56</SpO2>
-  <HR>90</HR>
-  <status>2</status>
+  <SpO2>58</SpO2>
+  <HR>150</HR>
+  <status>1</status>
   <isShow>true</isShow> 
 </root>

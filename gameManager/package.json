@@ -1,5 +1,5 @@
 {
-  "name": "nw-workbook",
+  "name": "nw-game-manager",
   "main": "index.html",
   "window": {
     "toolbar": false,
@@ -10,6 +10,7 @@
     "icon": "icon_128.png"
   },
   "dependencies": {
+    "fast-json-patch": "^0.5.0",
     "open": "0.0.5"
   }
 }

@@ -6,7 +6,7 @@ html,body,li,a{
 html,body{
 	height: 100%;
 	position: relative;
-	-webkit-app-region: drag;
+	/*-webkit-app-region: drag;*/
 	background-color:rgba(53,53,34,0.0);
 }
 body{
@@ -46,8 +46,8 @@ body{
 	width: 100%;
     background: #445;
     z-index: 1;
-    -webkit-user-select: none;
-    -webkit-app-region: drag;
+   /* -webkit-user-select: none;
+    -webkit-app-region: drag;*/
     
 }
 .window_bar_left{
@@ -57,8 +57,8 @@ body{
 	letter-spacing: -4px;
     position: absolute;
     right: 0px;
-    -webkit-app-region: no-drag;
-    -webkit-user-select: none;
+    /*-webkit-app-region: no-drag;
+    -webkit-user-select: none;*/
 }
 
 .window_bar_right .button{

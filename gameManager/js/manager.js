@@ -62,14 +62,32 @@ p.init = function() {
 		function(err, results) {
 			//
 			manager.config = results.config;
-			win.x = screen.width - $(window).width();
-			win.y = parseInt((screen.height - $(window).height()) * 1.0 / 2);
+
+			manager.server_query = manager.config.web_link + "?stn=" + manager.config.stn;
+			//alert(manager.server_query);
+			if (manager.config.position.left == "default") {
+				win.x = screen.width - $(window).width();
+			} else {
+				win.x = parseInt(manager.config.position.left);
+			}
+
+			if (manager.config.position.top == "default") {
+				win.y = parseInt((screen.height - $(window).height()) * 1.0 / 2);
+			} else {
+				win.y = parseInt(manager.config.position.top);
+			}
+
 		});
 }
 
 //get manager config
 p.getManagerConfig = function(callback) {
-	var config = this.readJson("config.json");
+
+	//console.log(process.execPath);
+	//alert(process.cwd());
+	var config_path = process.execPath.replace(/[^\\]*$/,"");
+	//alert(config_path);
+	var config = this.readJson(config_path+"config.json");
 	callback(null, config);
 }
 
@@ -80,17 +98,25 @@ p.readJson = function(path) {
 
 //get information from server
 p.getInfoFromServer = function(callback) {
-	this.getInfoByHttp(callback);
+	//alert(this.server_query);
+	this.getInfoByHttp(this.server_query, callback);
 }
 
 //get information by http protocol
-p.getInfoByHttp = function(callback) {
-	http.get("http://localhost:8081/gm_stn01.php?type=get&" + Math.floor(Math.random() * 110000), function(res) {
+p.getInfoByHttp = function(server_query, callback) {
+	// $.get(server_query, function(data) {
+	// 	console.log(data);
+	// 	alert("Load was performed.");
+	// });
+	http.get(server_query, function(res) {
 		var body = '';
 		res.on('data', function(d) {
+			//console.log(d);
 			body += d;
+			body = body.replace('[', '').replace(']', '').replace(/\\/g, "\\/");
+			//alert(body);
 			//console.log(body);
-			callback(null, JSON.parse(body));
+			callback(null, body);
 		});
 
 	}).on('error', function(e) {
@@ -102,7 +128,8 @@ p.getInfoByHttp = function(callback) {
 p.dealWithInfo = function(info) {
 	//console.log(info);
 	//show the patient status
-	if (info.isShow) {
+
+	if (true) {
 
 		//update the SpO2 value
 		$("#SpO2").html(info.SpO2);
@@ -111,7 +138,7 @@ p.dealWithInfo = function(info) {
 		$("#HR").html(info.HR);
 
 		//update the status colors
-		switch (parseInt(info.status)) {
+		switch (parseInt(info.Alarm)) {
 			case 0:
 				//console.log("css");
 				$("#status").css({
@@ -142,27 +169,41 @@ p.dealWithInfo = function(info) {
 	//checkout the game information
 	//console.log(typeof this.games[3]);
 	var manager = this;
-	$.each(info.game, function(index, value) {
-		console.log("manager:value:"+value);
-		console.log(value);
-		var serverGame = value;
-		if (typeof manager.games[index] == "undefined") {
-			//console.log(this);
-			manager.games[index] = new Game();
-			$.each(manager.config.games,function(index,value){
-				//console.log(value);
-				console.log(value);
-				if(value.name == serverGame.name){
-					console.log("init the game with value："+value);
-					manager.games[index].init(value);
-					//manager.games[index].setPath(value.path); 		
-				}
-			})
+	// $.each(info.game, function(index, value) {
+	// 	console.log("manager:value:" + value);
+	// 	console.log(value);
+	// 	var serverGame = value;
+	// 	if (typeof manager.games[index] == "undefined") {
+	// 		//console.log(this);
+	// 		manager.games[index] = new Game();
+	// 		$.each(manager.config.games, function(index, value) {
+	// 			//console.log(value);
+	// 			console.log(value);
+	// 			if (value.name == serverGame.name) {
+	// 				console.log("init the game with value：" + value);
+	// 				manager.games[index].init(value);
+	// 				//manager.games[index].setPath(value.path); 		
+	// 			}
+	// 		})
+	// 	}
+	// 	//update games
+	// 	manager.games[index].update(value);
+	// });
+	if (typeof manager.games[0] == "undefined") {
+		var gameInfo = {
+			gameNo: info.GameNo,
+			gamePath: info.GamePath
 		}
-		//update games
-		manager.games[index].update(value);
-	});
+		manager.games[0] = new Game(gameInfo);
+	}
+	var gameUpdataInfo = {
+		gameNo: info.GameNo,
+		gamePath: info.GamePath,
+		gameStatus: info.Status,
+		gameStn: info.Stn
+	}
 
+	manager.games[0].update(gameUpdataInfo);
 
 
 }

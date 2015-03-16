@@ -1,0 +1,12 @@
+{
+  "name": "nw-test-tool",
+  "main": "index.html",
+  "window": {
+    "toolbar": false,
+    "frame": false,
+    "width": 950,
+    "height": 550,
+    "position": "center", 
+    "icon": "icon_128.png"
+  }
+}

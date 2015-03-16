@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+  	<title>Test tool</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+  	<link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+  	<script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/xml2json.js"></script>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="window_bar">
+        <div class="window_bar_left">Test Tool</div>
+        <div class="window_bar_right">
+          <div class="button" id="min">—</div>
+          <div class="button" id="max">口</div>
+          <div class="button" id="close">X</div>
+        </div> 
+      </div>
+      <div id="loader">
+        <!-- <div class="progress" id="progress_content"></div> -->
+        <!-- <div class="progress" id="progress_box">
+          
+        </div> -->
+        <div class="box">
+          <div class="loader5"></div>
+         
+        </div>
+      </div>
+      <div class="main_view">
+        
+        <div class="vertical-middle music-content" id="music-content">
+          <div class="music-nav">
+            <li class="nav-item" id="stn">Stn</li><li class="nav-item" id="pno">Pno</li><li class="nav-item">Glevel</li><li class="nav-item">GameNo</li><li class="nav-item" id="game-path">GamePath</li><li class="nav-item">Status</li><li class="nav-item">SpO2</li><li class="nav-item">HR</li><li class="nav-item">Alarm</li>
+          </div>
+        <div class="music-items">
+            
+          </div>
+        </div>
+
+      </div>
+      <div class="message-box">Push data success!</div>
+      
+
+      <div class="footer">
+        <div class="footer-nav">
+          <li class="nav-item">Stn</li><li class="nav-item">GameNo</li><li class="nav-item game-path" id="label-game-path">GamePath<input style="display:none;" class="fileDialog" type="file" accept=".exe"/><input type="button" value="select" id="choose_file"/></li><li class="nav-item">Status</li><li class="nav-item">SpO2</li><li class="nav-item">HR</li><li class="nav-item">Alarm</li>
+        </div>
+        <div class="footer-nav">
+          <input class="nav-item" id="Stn" value="1"></input><input class="nav-item" id="GameNo" value="1"></input><input class="nav-item game-path" id="GamePath" value="http://220.246.72.77/bikegame/index.html"></input><input class="nav-item" id="Status" value="1"></input><input class="nav-item" id="SpO2" value="100"></input><input class="nav-item" id="HR" value="90"></input><input class="nav-item" id="Alarm" value="0"></input>
+        </div>
+         <button id="push">Push</button>
+        
+      </div>
+      
+
+    </div>
+  </body>
+</html>

@@ -7,6 +7,7 @@ $(function() {
   var nw = require('nw.gui');
 
   var win = nw.Window.get();
+  win.setResizable(false);
 
   //Double click the main panel to close the game manager
   $(document).dblclick(function() {

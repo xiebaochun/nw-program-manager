@@ -46,7 +46,7 @@ p.init = function() {
 	//win.setResizable(false);
 
 	//set the manager`s size
-	win.width = 265;
+	win.width = 500;
 	win.height = 419;
 
 	//hold the manager
@@ -63,7 +63,7 @@ p.init = function() {
 			//
 			manager.config = results.config;
 
-			manager.server_query = manager.config.web_link + "?stn=" + manager.config.stn;
+			manager.server_query = manager.config.web_link_get + "?stn=" + manager.config.stn;
 			//alert(manager.server_query);
 			if (manager.config.position.left == "default") {
 				win.x = screen.width - $(window).width();
@@ -85,9 +85,9 @@ p.getManagerConfig = function(callback) {
 
 	//console.log(process.execPath);
 	//alert(process.cwd());
-	var config_path = process.execPath.replace(/[^\\]*$/,"");
+	var config_path = process.execPath.replace(/[^\\]*$/, "");
 	//alert(config_path);
-	var config = this.readJson(config_path+"config.json");
+	var config = this.readJson(config_path + "config.json");
 	callback(null, config);
 }
 
@@ -126,8 +126,9 @@ p.getInfoByHttp = function(server_query, callback) {
 
 //manager according the information,which from the server,to deal with the game operations,ect
 p.dealWithInfo = function(info) {
-	//console.log(info);
-	//show the patient status
+	// console.log("来自服务器的游戏信息：");
+	// console.log(info);
+	// show the patient status
 
 	if (true) {
 
@@ -189,21 +190,24 @@ p.dealWithInfo = function(info) {
 	// 	//update games
 	// 	manager.games[index].update(value);
 	// });
-	if (typeof manager.games[0] == "undefined") {
-		var gameInfo = {
-			gameNo: info.GameNo,
-			gamePath: info.GamePath
-		}
-		manager.games[0] = new Game(gameInfo);
+	
+	if (typeof manager.games[0] == "undefined" || manager.games[0]._isDisposed == true) {
+		// var gameInfo = {
+		// 	gameNo: info.GameNo,
+		// 	gamePath: info.GamePath,
+		// 	weblinkResults: manager.config.web_link_results
+		// }
+		console.log("New a game");
+		manager.games[0] = new Game(info, manager.config.web_link_results);
 	}
-	var gameUpdataInfo = {
-		gameNo: info.GameNo,
-		gamePath: info.GamePath,
-		gameStatus: info.Status,
-		gameStn: info.Stn
-	}
-
-	manager.games[0].update(gameUpdataInfo);
+	// var gameUpdataInfo = {
+	// 	gameNo: info.GameNo,
+	// 	gamePath: info.GamePath,
+	// 	gameStatus: info.Status,
+	// 	gameStn: info.Stn
+	// }
+	console.log(typeof manager.games[0] + " game _isDisposed:" +manager.games[0]._isDisposed);
+	manager.games[0].update(info);
 
 
 }

@@ -36,6 +36,15 @@ body{
 #HR{
 	top:235px;
 }
+.message-box{
+	display: none;
+	font-size: 12px;
+	color:#0BBF18;
+	position: absolute;
+	top:315px;
+	left: 60px;
+	font-family: monospace;
+}
 .wrap{
 	height: 100%;
 }

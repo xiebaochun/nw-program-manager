@@ -1,0 +1,12 @@
+{
+	"Mashine_number": "01",
+	"server_link": "http://localhost/PMS/gm_stn01.php",
+	"window": {
+		"left": 1300,
+		"top": 300
+	},
+	"games": [{
+		"name": "cycling",
+		"path": "http://localhost:8081/BikeGame"
+	}]
+}

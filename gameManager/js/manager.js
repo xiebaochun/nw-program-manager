@@ -46,7 +46,7 @@ p.init = function() {
 	//win.setResizable(false);
 
 	//set the manager`s size
-	win.width = 500;
+	win.width = 265;
 	win.height = 419;
 
 	//hold the manager

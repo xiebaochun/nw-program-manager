@@ -3,7 +3,7 @@
 	"web_link_get": "http://220.246.72.77/pms/gm/gmc.php",
 	"web_link_results": "http://220.246.72.77/pms/cmd/result.php",
  	"position": {
-		"left": "100",
+		"left": "default",
 		"top": "default"
 	}
 }
